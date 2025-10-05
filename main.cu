@@ -2,12 +2,14 @@
 #include <time.h>
 #include <float.h>
 #include <curand_kernel.h>
+
 #include "vec3.h"
 #include "ray.h"
 #include "sphere.h"
 #include "hitable_list.h"
 #include "camera.h"
 #include "material.h"
+#include "triangle.h"
 
 #define STB_IMAGE_IMPLEMENTATION
 #include "third_party/stb/stb_image.h"
@@ -112,6 +114,7 @@ __global__ void create_world(hitable** d_list, hitable** d_world, camera** d_cam
 				}
 			}
 		}
+
 		d_list[i++] = new sphere(vec3(0, 1, 0), 1.0, new dielectric(1.5));
 		d_list[i++] = new sphere(vec3(-4, 1, 0), 1.0, new lambertian(vec3(0.4, 0.2, 0.1)));
 		d_list[i++] = new sphere(vec3(4, 1, 0), 1.0, new metal(vec3(0.7, 0.6, 0.5), 0.0));

@@ -10,12 +10,14 @@ endif()
 
 set(CMAKE_CUDA_ARCHITECTURES native)
 
-include_directories(${CMAKE_SOURCE_DIR}/third_party/stb)
+add_subdirectory(third_party)
+
+include_directories(${CMAKE_SOURCE_DIR}/third_party)
+
 add_executable(${PROJECT_NAME} 
 	main.cu
 
-	third_party/stb/stb_image.h
-	third_party/stb/stb_image_write.h
+	triangle.h
 	vec3.h
 	ray.h
 	hitable.h
@@ -24,4 +26,5 @@ add_executable(${PROJECT_NAME}
 	camera.h
 	material.h
 )
+
 target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_SOURCE_DIR}/third_party)
