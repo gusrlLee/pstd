@@ -12,9 +12,9 @@
 #include "triangle.h"
 
 #define STB_IMAGE_IMPLEMENTATION
-#include "third_party/stb/stb_image.h"
+#include "stb/stb_image.h"
 #define STB_IMAGE_WRITE_IMPLEMENTATION
-#include "third_party/stb/stb_image_write.h"
+#include "stb/stb_image_write.h"
 
 #define CHECK_CUDA_ERROR(val) check_cuda( (val), #val, __FILE__, __LINE__ )
 
