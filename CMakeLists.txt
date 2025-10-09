@@ -18,6 +18,8 @@ add_executable(${PROJECT_NAME}
 
 	src/utils.hpp
 	src/utils.cpp
+
+	src/structs.hpp
 )
 
 target_link_libraries(${PROJECT_NAME} Vulkan::Vulkan)
