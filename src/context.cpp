@@ -273,7 +273,7 @@ namespace pstd
 			VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_SUBGROUP_UNIFORM_CONTROL_FLOW_FEATURES_KHR };
 		subgroupUniformCF.shaderSubgroupUniformControlFlow = VK_TRUE;
 
-		// (3) Cooperative Vector feature struct
+		// (3) Cooperative Matrix feature struct
 		VkPhysicalDeviceCooperativeMatrixFeaturesKHR cooperativeMatrixFeatures{
 			VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_MATRIX_FEATURES_KHR };
 		cooperativeMatrixFeatures.cooperativeMatrix = VK_TRUE;

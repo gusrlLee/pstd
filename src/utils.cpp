@@ -10,9 +10,9 @@ namespace pstd
 			vkEnumerateInstanceExtensionProperties(nullptr, &extensionCount, nullptr);
 			std::vector<VkExtensionProperties> extensions(extensionCount);
 			vkEnumerateInstanceExtensionProperties(nullptr, &extensionCount, extensions.data());
-			
+
 			fmt::print("[Available instance extensions]:\n");
-			for (const auto& extension : extensions) 
+			for (const auto& extension : extensions)
 			{
 				fmt::print("\t {} \n", extension.extensionName);
 			}
@@ -25,7 +25,7 @@ namespace pstd
 			vkEnumeratePhysicalDevices(ctx.inst, &deviceCount, nullptr);
 			std::vector<VkPhysicalDevice> devices(deviceCount);
 			vkEnumeratePhysicalDevices(ctx.inst, &deviceCount, devices.data());
-			
+
 			fmt::print("[Available physical devices list]:\n");
 			for (const auto& device : devices)
 			{
@@ -38,18 +38,37 @@ namespace pstd
 			fmt::print("\n");
 		}
 
-		void printAvailableDeviceExtensions(Context &ctx)
+		void printAvailableDeviceExtensions(Context& ctx)
 		{
 			uint32_t extensionCount = 0;
 			VK_CHECK(vkEnumerateDeviceExtensionProperties(ctx.gpu, nullptr, &extensionCount, nullptr));
 			std::vector<VkExtensionProperties> extensions(extensionCount);
 			VK_CHECK(vkEnumerateDeviceExtensionProperties(ctx.gpu, nullptr, &extensionCount, extensions.data()));
-			
+
 			fmt::print("[Available logical device extensions]:\n");
 			for (const auto& ext : extensions)
 			{
 				fmt::print("\t {} version: {} \n", ext.extensionName, ext.specVersion);
 			}
+		}
+		std::vector<char> readFile(const std::string& fname)
+		{
+			std::ifstream file(fname, std::ios::ate | std::ios::binary);
+
+			if (!file.is_open())
+			{
+				throw std::runtime_error("failed to open file!");
+			}
+
+			size_t fileSize = (size_t)file.tellg();
+			std::vector<char> buffer(fileSize);
+
+			file.seekg(0);
+			file.read(buffer.data(), fileSize);
+
+			file.close();
+
+			return buffer;
 		}
 	}
 }

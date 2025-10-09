@@ -9,5 +9,6 @@ namespace pstd
 		void printAvailableInstanceExtensions();
 		void printAvailablPhyscialDevices(Context& ctx);
 		void printAvailableDeviceExtensions(Context& ctx);
+		std::vector<char> readFile(const std::string& fname);
 	}
 }
